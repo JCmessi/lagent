@@ -13,4 +13,3 @@ streamlit
 tiktoken
 timeout-decorator
 typing-extensions
-duckduckgo_search==5.3.1b1

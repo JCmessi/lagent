@@ -3,6 +3,7 @@ distro
 filelock
 func_timeout
 griffe
+class_registry
 json5
 jsonschema
 jupyter

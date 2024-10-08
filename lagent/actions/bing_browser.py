@@ -135,7 +135,7 @@ class BingSearch(BaseSearch):
             'Failed to get search results from Bing Search after retries.')
 
     def _call_bing_api(self, query: str) -> dict:
-        endpoint = 'https://api.bing.microsoft.com/v7.0/custome/search'
+        endpoint = 'https://api.bing.microsoft.com/v7.0/custom/search'
         params = {'q': query, 'customconfig': customConfigId, mkt': self.market, 'count': f'{self.topk * 2}'}
         headers = {'Ocp-Apim-Subscription-Key': self.api_key}
         response = requests.get(

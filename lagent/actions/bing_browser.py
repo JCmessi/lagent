@@ -104,6 +104,7 @@ class BingSearch(BaseSearch):
 
     def __init__(self,
                  api_key: str,
+                 customConfigId: str,
                  region: str = 'zh-CN',
                  topk: int = 3,
                  black_list: List[str] = [
@@ -114,6 +115,7 @@ class BingSearch(BaseSearch):
                  ],
                  **kwargs):
         self.api_key = api_key
+        self.customConfigId = customConfigId
         self.market = region
         self.proxy = kwargs.get('proxy')
         super().__init__(topk, black_list)
@@ -133,8 +135,8 @@ class BingSearch(BaseSearch):
             'Failed to get search results from Bing Search after retries.')
 
     def _call_bing_api(self, query: str) -> dict:
-        endpoint = 'https://api.bing.microsoft.com/v7.0/search'
-        params = {'q': query, 'mkt': self.market, 'count': f'{self.topk * 2}'}
+        endpoint = 'https://api.bing.microsoft.com/v7.0/custome/search'
+        params = {'q': query, 'customconfig': customConfigId, mkt': self.market, 'count': f'{self.topk * 2}'}
         headers = {'Ocp-Apim-Subscription-Key': self.api_key}
         response = requests.get(
             endpoint, headers=headers, params=params, proxies=self.proxy)

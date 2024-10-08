@@ -136,7 +136,7 @@ class BingSearch(BaseSearch):
 
     def _call_bing_api(self, query: str) -> dict:
         endpoint = 'https://api.bing.microsoft.com/v7.0/custom/search'
-        params = {'q': query, 'customconfig': customConfigId, mkt': self.market, 'count': f'{self.topk * 2}'}
+        params = {'q': query, 'customconfig': customConfigId, 'mkt': self.market, 'count': f'{self.topk * 2}'}
         headers = {'Ocp-Apim-Subscription-Key': self.api_key}
         response = requests.get(
             endpoint, headers=headers, params=params, proxies=self.proxy)
